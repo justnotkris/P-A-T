@@ -145,7 +145,10 @@ while running:
     elif all(pot.filled for pot in pot_group) and level <= 3:
         screen.blit(font.render(f"NEXT LEVEL (LEVEL - {level})", True, (0, 0, 0)), (WIDTH // 2 - 170, HEIGHT // 2)) 
         pygame.display.flip()
+        mixer.music.load("complete.mp3")
+        mixer.music.play(1)
         pygame.time.wait(1000)
+        mixer.music.stop()
 
         level += 1
         if level in level_configs:
@@ -173,7 +176,9 @@ while running:
         else:
             screen.blit(pygame.transform.scale(pygame.image.load("Backround-4.jpg"), (WIDTH, HEIGHT)).convert(), (0, 0))
             pygame.display.flip()
-            pygame.time.wait(2000)
+            mixer.music.load("victory.mp3")
+            mixer.music.play(-1)
+            pygame.time.wait(8000)
             running = False
                                      
     
